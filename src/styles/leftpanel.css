@@ -1,0 +1,41 @@
+.lp-main{
+    /* background-color: rebeccapurple; */
+    height: 100vh;
+    overflow: auto;
+}
+
+.fl-main{
+    /* background-color: red; */
+    width: 100%;
+    /* background-color: aliceblue; */
+    margin: 0.2rem;
+    /* border: 1px solid black; */
+    padding: 0.01rem;
+}
+.fl-subs{
+    /* padding: 0.2rem; */
+    padding: -1rem;
+    padding-left: 1rem;
+}
+.fl-title{
+    font-size: small;
+    margin-left: 0.4rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.1rem;
+}
+.fl-title:hover{
+    /* box-shadow: -2px 3px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: -2px 3px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: -2px 3px 5px 0px rgba(0,0,0,0.75); */
+    background-color: rgb(243, 243, 243);
+}
+
+.fl-title p{
+    margin-left: 0.2rem;
+}
+.fl-loading{
+    font-size: x-small;
+    color: blue;
+}
