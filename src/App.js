@@ -1,11 +1,11 @@
 import Editor from "./components/editor";
 import LeftPanel from "./components/leftPanel";
-import MainContextProvider from './contexts/mainContext'
+import MainContextProvider, { MainContext } from './contexts/mainContext'
 
 import "./App.css"
 
 import { Resizable, ResizableBox } from 'react-resizable';
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 
 
@@ -15,29 +15,62 @@ function App() {
   const [load, setLoad] = useState(false);
   const [branch, setBranch] = useState("master")
 
+  const [night, setNight] = useState(true)
+
+  const mainContext = useContext(MainContext)
+
+
+
   return (
-    <MainContextProvider>
-      <div className="App">
-        <div>
-          <input value={baseUrl} onChange={(e) => { setBaseUrl(e.target.value) }} className="app-baseurl" placeholder="Public github repo Base url" />
-          <input value={branch} onChange={(e) => { setBranch(e.target.value) }} />
-          <button onClick={() => { setLoad(!load) }}>Go!</button>
-        </div>
 
-        <div className="app-holder">
+    <div className="App">
+      <div className="app-header">
 
-          <div className="app-lpanel">
-            <LeftPanel baseUrl={baseUrl} load={load} branch={branch} />
-          </div>
+        <input value={baseUrl} onChange={(e) => { setBaseUrl(e.target.value) }} className="app-baseurl" placeholder="Public github repo Base url" />
 
-          <div className="app-editor">
-            <Editor />
-          </div>
+        <input value={branch} onChange={(e) => { setBranch(e.target.value) }} />
+        <button onClick={() => { setLoad(!load) }}>Go!</button>
 
-        </div>
+        <i class="fa fa-moon" aria-hidden="true"
+          onClick={() => {
+            changeTheme(night);
+            mainContext.setCurrentIDETheme(night ? "twilight" : "tomorrow")
+            setNight(!night);
+
+          }}
+        ></i>
+
       </div>
-    </MainContextProvider>
+
+      <div className="app-holder">
+
+        <div className="app-lpanel">
+          <LeftPanel baseUrl={baseUrl} load={load} branch={branch} />
+        </div>
+
+        <div className="app-editor">
+          <Editor />
+        </div>
+
+      </div>
+    </div>
   );
 }
 
 export default App;
+
+
+
+
+const changeTheme = (night) => {
+  if (night) {
+    document.body.style.setProperty("--primary", "black");
+    document.body.style.setProperty("--secondary", "grey");
+    document.body.style.setProperty("--thirdary", "rgb(39, 38, 38)");
+
+  } else {
+    document.body.style.setProperty("--primary", "white");
+    document.body.style.setProperty("--secondary", "black");
+    document.body.style.setProperty("--thirdary", "rgb(243, 243, 243)");
+  }
+}

@@ -11,6 +11,8 @@ const MainContextProvider = (props) => {
 
     const [currentOpenExtention, setCurrentOpenExtention] = useState("plain")
 
+    const [currentIDETheme, setCurrentIDETheme] = useState('tomorrow')
+
     const clear = () => {
         setCurrentEditorDataRaw(null)
         setCurrentOpenBlob(null)
@@ -21,7 +23,8 @@ const MainContextProvider = (props) => {
             value={{
                 currentEditorDataRaw, setCurrentEditorDataRaw,
                 currentOpenBlob, setCurrentOpenBlob, clear,
-                currentOpenExtention, setCurrentOpenExtention
+                currentOpenExtention, setCurrentOpenExtention,
+                currentIDETheme, setCurrentIDETheme
             }}>
             {props.children}
         </MainContext.Provider>

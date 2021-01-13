@@ -24,12 +24,13 @@
     align-items: center;
     cursor: pointer;
     padding: 0.1rem;
+    color: var(--secondary);
 }
 .fl-title:hover{
     /* box-shadow: -2px 3px 5px 0px rgba(0,0,0,0.75);
 -webkit-box-shadow: -2px 3px 5px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: -2px 3px 5px 0px rgba(0,0,0,0.75); */
-    background-color: rgb(243, 243, 243);
+    background-color: var(--thirdary)
 }
 
 .fl-title p{
@@ -37,5 +38,5 @@
 }
 .fl-loading{
     font-size: x-small;
-    color: blue;
+    color: rgb(0, 140, 255);
 }

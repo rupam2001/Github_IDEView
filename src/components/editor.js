@@ -18,7 +18,7 @@ import "ace-builds/src-noconflict/mode-rust"
 import "ace-builds/src-noconflict/mode-sql"
 import "ace-builds/src-noconflict/mode-css"
 import "ace-builds/src-noconflict/mode-sass"
-
+import "ace-builds/src-noconflict/mode-markdown"
 
 
 
@@ -28,6 +28,7 @@ import "ace-builds/src-noconflict/theme-solarized_dark"
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/theme-terminal"
 import "ace-builds/src-noconflict/theme-tomorrow"
+import "ace-builds/src-noconflict/theme-twilight"
 
 export default function Editor() {
 
@@ -37,6 +38,8 @@ export default function Editor() {
     const [text, setText] = useState(null)
 
     const [mode, setMode] = useState("")
+
+
 
 
 
@@ -58,13 +61,20 @@ export default function Editor() {
 
     }, [mainContext.currentEditorDataRaw])
 
+    if (mainContext.currentOpenExtention in { "png": 1, "jpg": 1 })
+        return (
+            <div className="ed-main">
+                <img src={"data:image/png;base64, " + text}>
 
+                </img>
+            </div>
+        )
 
     return (
         <div className="ed-main">
             <AceEditor
                 mode={mode}
-                theme="tomorrow"
+                theme={mainContext.currentIDETheme}
                 value={text}
                 name="UNIQUE_ID_OF_DIV"
                 editorProps={{ $blockScrolling: true }}
@@ -89,6 +99,8 @@ const extentionToMode = (ext) => {
             return "python"
         case "ts":
             return "typescript"
+        case "md":
+            return "markdown"
 
 
         default:

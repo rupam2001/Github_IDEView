@@ -1,6 +1,18 @@
-.App{
-
+:root{
+  --primary: white;
+  --secondary: black;
+  --thirdary: rgb(243, 243, 243);
 }
+
+body{
+  background-color: var(--primary);
+}
+input{
+  background-color: var(--thirdary);
+  color: var(--secondary);
+}
+
+
 .app-holder{
   display: flex;
   flex-direction: row;
@@ -23,5 +35,18 @@
 }
 
 button{
+  cursor: pointer;
+  background-color: var(--primary);
+  color: var(--secondary);
+  padding: 0.4rem;
+  border: 1px solid grey;
+}
+.app-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.app-header i{
+  color: var(--secondary);
   cursor: pointer;
 }

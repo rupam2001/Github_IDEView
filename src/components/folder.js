@@ -82,7 +82,7 @@ const getIcon = (data, isOpen, sha) => {
     if (data.type == 'blob') {
 
         if (isOpen && sha == data.sha)
-            return (<i class="fa fa-file" aria-hidden="true" style={{ color: 'blue' }}></i>)
+            return (<i class="fa fa-file" aria-hidden="true" style={{ color: 'rgb(0, 140, 255)' }}></i>)
 
         return (
             <i class="fa fa-file" aria-hidden="true"></i>
